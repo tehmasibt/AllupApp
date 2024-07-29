@@ -1,4 +1,6 @@
 using AllupApp.App_Data;
+using AllupApp.Interfaces;
+using AllupApp.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,8 @@ builder.Services.AddDbContext<AllupAppDbContext>(options =>
 {
     options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
 });
+// addscopa, addtreansient, addsingleton
+builder.Services.AddScoped<ILayoutService, LayoutService>();
 
 
 var app = builder.Build();
