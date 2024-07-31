@@ -13,6 +13,17 @@ namespace AllupApp.Services
         {
             _allupAppDbContext = allupAppDbContext;
         }
+
+        public async Task<IEnumerable<Category>> GetCategoriesAsync()
+        {
+            var categories = await _allupAppDbContext.Categories
+                .AsNoTracking()
+                .Where(a => !a.IsDeleted)
+                .Include(c => c.Children)
+                .ToListAsync();
+            return categories;
+        }
+
         public IDictionary<string, string> GetSettings()
         {
             return _allupAppDbContext.Settings

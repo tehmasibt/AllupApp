@@ -1,5 +1,29 @@
 ﻿$(document).ready(function () {
 
+    //Search
+    $(document).on("keyup", "#searchInput", function () {
+        $("#searchList").html("");
+        let searchValue = $(this).val();
+        let categoryId = $("#selectSearch").find(":selected").val();
+        if (searchValue.trim().length > 3)
+        {
+            axios.get("/product/searchProduct?categoryId=" + categoryId + "&search=" + searchValue)
+                .then(function (datas) {
+                    $("#searchList").html(datas.data)
+                })
+        }
+    })
+    $(document).on("change", "#selectSearch", function () {
+        $("#searchInput").val("");
+        $("#searchList").html("");
+    })
+
+
+
+
+
+
+    //Modal
     $(".productModal").click(function (ev) {
         ev.preventDefault();
         let url = $(this).attr("href");
