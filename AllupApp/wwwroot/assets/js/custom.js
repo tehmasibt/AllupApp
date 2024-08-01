@@ -1,4 +1,16 @@
 ﻿$(document).ready(function () {
+    //AddBasket
+    $(".addToBasket").click(function (ev) {
+        ev.preventDefault();
+        var id = $(this).data("id");
+        console.log(id);
+        axios.get("/basket/addbasket?id=" + id)
+            .then(function (datas) {
+                $(".mini-cart").html(datas.data);
+            })
+    })
+
+    
 
     //Search
     $(document).on("keyup", "#searchInput", function () {
@@ -17,10 +29,6 @@
         $("#searchInput").val("");
         $("#searchList").html("");
     })
-
-
-
-
 
 
     //Modal

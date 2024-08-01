@@ -38,10 +38,10 @@
                         </ul>
                     </div>
                     <div class="product-price">
-                        <span class="price-sale">€@Model.Price</span>
+                        <span class="price-sale">€@String.Format("{0:0.0}", Model.Price)</span>
                         @if (Model.DisCountPrice > 0)
                         {
-                            <span class="regular-price">€@Model.DisCountPrice</span>
+                            <span class="regular-price">€@String.Format("{0:0.0}", Model.DisCountPrice)</span>
                             <span class="save">Save @((Model.Price - Model.DisCountPrice) / Model.Price * 100)%</span>
                         }
                     </div>
