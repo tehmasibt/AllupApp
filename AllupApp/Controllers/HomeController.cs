@@ -18,7 +18,6 @@ namespace AllupApp.Controllers
         public async Task<IActionResult> Index()
         {
             HomeVM vm = new HomeVM();
-            vm.Sliders = await _context.Sliders.Where(p => !p.IsDeleted).ToListAsync();
             vm.Categories = await _context.Categories.Where(p => !p.IsDeleted && p.IsMain).ToListAsync();
             vm.BestSellerProducts = await _context.Products.Where(b => !b.IsDeleted && b.IsBestSeller).ToListAsync();
             vm.NewProducts = await _context.Products.Where(b => !b.IsDeleted && b.IsNewArrival).ToListAsync();

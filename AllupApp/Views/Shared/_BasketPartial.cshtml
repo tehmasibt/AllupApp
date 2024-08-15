@@ -2,7 +2,15 @@
 
 
 
-
+<div class="cart-btn">
+    <a asp-controller="basket" asp-action="getbasket">
+        <i class="icon ion-bag"></i>
+        <span class="text">Cart :</span>
+        <span class="total">$@String.Format("{0:0.0}", Model.Sum(p => p.Price * p.Count))</span>
+        <span class="count">@Model.Sum(a => a.Count)</span>
+    </a>
+</div>
+<div class="mini-cart">
 <ul class="cart-items">
     @foreach (var item in Model)
     {
@@ -39,5 +47,6 @@
 </div>
 <div class="checkout text-center">
     <a href="checkout.html" class="main-btn">Checkout</a>
+</div>
 </div>
  

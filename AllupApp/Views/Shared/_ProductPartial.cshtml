@@ -19,7 +19,7 @@
                     </ul>
                     @if (product.DisCountPrice > 0)
                     {
-                        <span class="discount-product">-@((product.Price - product.DisCountPrice) / product.Price * 100)%</span>
+                        <span class="discount-product">-@String.Format("{0:0.0}",(product.Price - product.DisCountPrice) / product.Price * 100)%</span>
                     }
                 </div>
                 <div class="product-content">
@@ -34,12 +34,12 @@
                     <div class="product-price">
                         @if (product.DisCountPrice > 0)
                         {
-                            <span class="regular-price">€@product.Price</span>
-                            <span class="price-sale">€@product.DisCountPrice</span>
+                            <span class="regular-price">€@String.Format("{0:0.0}", product.Price)</span>
+                            <span class="price-sale">€@String.Format("{0:0.0}",product.DisCountPrice)</span>
                         }
                         else
                         {
-                            <span class="price-sale">€@product.Price</span>
+                            <span class="price-sale">€@String.Format("{0:0.0}", product.Price)</span>
                         }
                     </div>
                 </div>

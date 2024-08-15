@@ -35,11 +35,11 @@
                 <li class="rating-on"><i class="fas fa-star"></i></li>
             </ul>
             <div class="product-prices">
-                <span class="sale-price">€@Model.Price</span>
+                <span class="sale-price">€@String.Format("{0:0.0}",Model.Price)</span>
                 @if (Model.DisCountPrice>0)
                 {
-                    <span class="sale-price">€@Model.DisCountPrice</span>
-                    <span class="save">Save @((Model.Price-Model.DisCountPrice)/Model.Price*100)%</span>
+                    <span class="sale-price">€@String.Format("{0:0.0}",Model.DisCountPrice)</span>
+                    <span class="save">Save @String.Format("{0:0.0}",(Model.Price - Model.DisCountPrice)/Model.Price*100)%</span>
                 }
             </div>
             <p class="product-description">@Model.Description</p>

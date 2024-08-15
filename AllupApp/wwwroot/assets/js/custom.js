@@ -6,7 +6,7 @@
         console.log(id);
         axios.get("/basket/addbasket?id=" + id)
             .then(function (datas) {
-                $(".mini-cart").html(datas.data);
+                $(".header-cart").html(datas.data);
             })
     })
 

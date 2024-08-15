@@ -1,3 +1,4 @@
+using AllupApp;
 using AllupApp.App_Data;
 using AllupApp.Interfaces;
 using AllupApp.Services;
@@ -7,18 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<AllupAppDbContext>(options =>
-{
-    options.UseSqlServer(config.GetConnectionString("DefaultConnection"));
-});
-// addscopa, addtreansient, addsingleton
-builder.Services.AddScoped<ILayoutService, LayoutService>();
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromSeconds(10);
-});
-builder.Services.AddHttpContextAccessor();
+builder.Services.Register(config);
 
 var app = builder.Build();
 

@@ -39,15 +39,19 @@ namespace AllupApp.Controllers
             }
             else
             {
-                baskets.Add(new BasketVM() { Id = product.Id, Name = product.Name, Price = product.Price, Image = product.MainImage, Count = 1 });
+                baskets.Add(new BasketVM() { 
+                    Id = product.Id,
+                    Name = product.Name,
+                    Price = product.DisCountPrice > 0 ? product.DisCountPrice : product.Price,
+                    Image = product.MainImage, Count = 1, 
+                    ExTax = product.ExTax });
             }
             HttpContext.Response.Cookies.Append("basket", JsonConvert.SerializeObject(baskets));
             return PartialView("_BasketPartial", baskets);
         }
         public IActionResult GetBasket()
         {
-            var result = HttpContext.Request.Cookies["basket"];
-            return Json(result);
+            return View();
         }
     }
 }
